@@ -67,4 +67,26 @@
 
 <br />
 
+接着我们需要分别对这两个asm文件配置属性。我们先右键点击“test_arm.asm”，然后选择“属性”。将“平台”这栏选为“ARM64”，然后在“从生成中排除”选择为“否”，在“项类型”中选择“Microsoft ARM Assembler”。接着，我们再将平台选为“x64”，然后将“从项目中排除”这一项选为“是”。如下图所示：
 
+<br />
+
+![9.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/9.JPG)
+
+<br />
+
+接着，对“test_x64.asm”也是如法炮制。只不过要对它设置为“x64”平台上“从项目中排除”选为“否”，“ARM64”平台上“从项目中排除”选为“是”。然后“项类型选择为“Microsoft Macro Assembler”。
+
+最后，我们分别将平台切换为“x64”用Release模式编译一把，再切换为“ARM64”用Release模式编译一把，（如下图所示）。我们可以在项目根目录中看到生成了ARM64文件夹以及x64文件夹，其中的Release目录中就能找到对应所生成的“UWPDLL.dll”文件。
+
+<br />
+
+![8.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/8.JPG)
+
+<br />
+
+UWP应用与桌面应用所生成的dll文件会有些差别。桌面端DLL项目不仅生成了DLL文件，还生成了lib文件，而且这两个都需要被放置到目标项目工程中进行加载。而UWP的DLL项目就生成一个DLL文件，没有lib文件生成，因此我们就把所生成的相应目标平台的dll文件保存好即可。
+
+<br />
+
+下面我们将创建一个基于UWP的C#空白应用项目。
