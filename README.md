@@ -60,3 +60,11 @@
 <br />
 
 进入添加文件界面之后，我们选中左边栏的“Visual C++”，然后再选择右边框中的“C++文件”，不过我们要在“名称”中填写asm作为后缀的文件名。这里的demo分别建了“test_arm.asm”与“test_x64.asm”这两个汇编源文件。前者用于书写ARM64汇编，或者用于书写x86_64架构的汇编。尽管都基于MASM语法，但在某些细节上还是有些不同，我们可以直接进仓库的源文件中查看内容。
+
+<br />
+
+![7.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/7.JPG)
+
+<br />
+
+
