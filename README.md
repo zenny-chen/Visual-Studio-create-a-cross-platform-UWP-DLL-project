@@ -89,4 +89,47 @@ UWP应用与桌面应用所生成的dll文件会有些差别。桌面端DLL项�
 
 <br />
 
-下面我们将创建一个基于UWP的C#空白应用项目。
+下面我们将创建一个基于UWP的C#空白应用项目。我们进入Visual Studio 2019的欢迎界面，然后点击“创建新项目”，这次我们要选择“C#空白应用（通用Windows）”，如下图所示。
+
+<br />
+
+![10.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/10.JPG)
+
+<br />
+
+本demo将此项目命名为“UWPTest”。进入编辑界面之后，我们需要为当前项目设置预编译选项。因为我们要支持ARM64与x64这两种目标平台，因此我们需要为每一种目标平台设置一个预编译宏，使得我们可以针对该处理器架构平台加载不同的DLL库。我们在菜单栏中选择“项目”，然后选择“UWPTest属性”。然后先选择“x64”平台，在条件编译符号一栏中添加`CPU_X64`这一项，如下图示。
+
+<br />
+
+![11.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/11.JPG)
+
+<br />
+
+接着，我们再将平台切换为“ARM64”，然后在条件编译符号一栏中添加`CPU_X64`这一项，如下图示。
+
+<br />
+
+![12.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/12.JPG)
+
+<br />
+
+接着，我们就要往当前项目中添加之前生成的dll文件了。由于UWP应用跟普通桌面应用不同，它默认情况下不允许动态加载动态连接库，因此需要将动态链接库添加到当前项目中。我们鼠标右键点击“UWPTest(Universal Windows)”，然后先添加一个名为“dlls”的文件夹。在这里添加之后，该文件夹会对应添加到当前项目的文件目录中，这一点与桌面应用所添加的“筛选器”有所不同。
+
+<br />
+
+![13.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/13.JPG)
+
+<br />
+
+添加完dlls目录之后，我们再分别添加“ARM64”与“x64”这两个子目录。如下图所示：
+
+<br />
+
+![14.jpg](https://github.com/zenny-chen/Visual-Studio-create-a-cross-platform-UWP-DLL-project/blob/master/images/14.JPG)
+
+<br />
+
+我们打开文件资源管理器，进入UWPTest项目所在的文件目录，然后在“dlls/ARM64/”目录中添加刚刚在ARM64文件夹里所生成的dll文件；在“dlls/x64/”目录中添加刚刚在x64文件夹里所生成的dll文件。
+
+这些都完成之后，我们就可以切换对应平台进行运行了。各位可以查看仓库里UWPTest文件夹中的代码实现细节。
+
